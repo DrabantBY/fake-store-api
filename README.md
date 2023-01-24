@@ -1,2 +1,3 @@
 # fake-store-api
-it-step-school final project
+
+it-step school final project
