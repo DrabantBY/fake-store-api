@@ -4,7 +4,6 @@ import loaderProductsList from './loaders/loaderProductsList';
 import loaderProductsCategory from './loaders/loaderProductsCategory';
 import Products from './components/Products/Products';
 import ProductsList from './components/Products/ProductsList';
-import ProductsCategory from './components/Products/ProductsCategory';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
           },
           {
             path: '/category/:category',
-            element: <ProductsCategory />,
+            element: <ProductsList />,
             loader: loaderProductsCategory,
           },
         ],

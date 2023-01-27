@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import getCategories from '../../api/getCategories';
 
 const Categories = () => {
   const [categories, setCategories] = useState<string[]>([]);
+  const [searchParams] = useSearchParams();
+  const queryString = `/?${searchParams.toString()}`;
 
   useEffect(() => {
     (async () => {
@@ -13,16 +15,19 @@ const Categories = () => {
   }, []);
 
   return (
-    <ul>
+    <div className="list-group list-group-flush mb-3">
+      <NavLink className="list-group-item list-group-item-action" to={queryString}>
+        all goods
+      </NavLink>
       {categories.map((category) => (
-        <li key={category}>
-          <NavLink to={`category/${category}/?asdf=asdf`}>{category}</NavLink>
-        </li>
+        <NavLink
+          key={category}
+          className="list-group-item list-group-item-action"
+          to={`category/${category}${queryString}`}>
+          {category.split('-').at(-1)}
+        </NavLink>
       ))}
-      <li>
-        <NavLink to="/">all categories</NavLink>
-      </li>
-    </ul>
+    </div>
   );
 };
 

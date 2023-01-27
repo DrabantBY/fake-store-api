@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/opencart.svg';
 import { ReactComponent as DollarIcon } from '../../assets/dollar-sign-solid.svg';
 import { ReactComponent as CartIcon } from '../../assets/cart-shopping-solid.svg';
-import './header.scss';
 
 const Header = () => (
   <header className="header">

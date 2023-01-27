@@ -5,11 +5,7 @@ import Footer from '../components/Footer/Footer';
 const MainPage = () => (
   <>
     <Header />
-    <main className="main">
-      <div className="container main__container">
-        <Outlet />
-      </div>
-    </main>
+    <Outlet />
     <Footer />
   </>
 );
