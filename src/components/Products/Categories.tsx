@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import getCategories from '../../api/getCategories';
 
 const Categories = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [searchParams] = useSearchParams();
+  const ref = useRef(true);
   const queryString = `/?${searchParams.toString()}`;
 
   useEffect(() => {
-    (async () => {
-      const data = await getCategories();
-      setCategories(data);
-    })();
+    if (ref.current) {
+      getCategories().then(setCategories);
+      ref.current = !ref.current;
+    }
   }, []);
 
   return (

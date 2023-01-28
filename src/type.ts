@@ -19,12 +19,3 @@ export type RangeFilterDataType = {
   rangeId: string;
   init: number;
 };
-
-export type FilterArgsType = {
-  search: string;
-  sort: string;
-  minPrice: number;
-  maxPrice: number;
-  minRating: number;
-  maxRating: number;
-};

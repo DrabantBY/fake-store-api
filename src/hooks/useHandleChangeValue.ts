@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const useHandleChangeValue = (
@@ -6,9 +6,12 @@ const useHandleChangeValue = (
   initValue: string | number
 ): [string | number, (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void] => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [stateChangeValue, setStateChangeValue] = useState(
-    searchParams.get(queryParam) ?? initValue
-  );
+
+  const [stateChangeValue, setStateChangeValue] = useState<string | number>(''); // searchParams.get(queryParam) ?? initValue
+
+  useEffect(() => {
+    setStateChangeValue(searchParams.get(queryParam) ?? initValue);
+  }, [initValue, queryParam, searchParams]);
 
   const handleChangeValue: React.ChangeEventHandler<HTMLSelectElement | HTMLInputElement> = (e) => {
     const value = e.target.value.trim().toLocaleLowerCase();

@@ -1,10 +1,17 @@
 import filterByRatingPrice from './filterByRatingPrice';
 import filterBySearch from './filterBySearch';
 import sortByQueryParams from './sortByQueryParams';
-import type { ProductInterface, FilterArgsType } from '../type';
+import type { ProductInterface } from '../type';
 
-const filterByQueryParams = (products: ProductInterface[], filters: FilterArgsType) => {
-  const { search, sort, minPrice, maxPrice, minRating, maxRating } = filters;
+const filterByQueryParams = (products: ProductInterface[], searchParams: URLSearchParams) => {
+  const search = searchParams.get('search') ?? '';
+  const sort = searchParams.get('sort') ?? '';
+
+  const minRating = Number(searchParams.get('minRating') ?? 0);
+  const maxRating = Number(searchParams.get('maxRating') ?? 5);
+  const minPrice = Number(searchParams.get('minPrice') ?? 20);
+  const maxPrice = Number(searchParams.get('maxPrice') ?? 800);
+
   const productsByFilters = products.filter(
     (product) =>
       filterBySearch(product, search) &&

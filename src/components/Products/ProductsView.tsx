@@ -14,7 +14,7 @@ const ProductsView = () => {
   };
 
   return (
-    <div className="list-group list-group-horizontal">
+    <div className="list-group list-group-horizontal mb-3">
       <button
         type="button"
         className={`list-group-item list-group-item-action text-center${isBlock ? ' active' : ''}`}

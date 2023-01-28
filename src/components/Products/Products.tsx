@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Categories from './Categories';
 import ProductsView from './ProductsView';
 import RangeFilter from './RangeFilter';
+import ResetFilters from './ResetFilters';
 import SearchForm from './SearchForm';
 import SelectSort from './SelectSort';
 
@@ -25,6 +26,7 @@ const Products = () => {
               </div>
             </div>
             <ProductsView />
+            <ResetFilters />
           </div>
           <div className="col-7 col-sm-8 col-lg-10">
             <Outlet />

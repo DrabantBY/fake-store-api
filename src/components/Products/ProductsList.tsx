@@ -1,16 +1,16 @@
 import { useLoaderData, useSearchParams } from 'react-router-dom';
 import ProductsItem from './ProductsItem';
 import ProductsRow from './ProductsRow';
-import useFilterByQueryParams from '../../hooks/useFilterByQueryParams';
 import { ReactComponent as IconInfo } from '../../assets/info-circle.svg';
+import filterByQueryParams from '../../helpers/filterByQueryParams';
 import type { ProductInterface } from '../../type';
 
 const ProductsList = () => {
   const products = useLoaderData() as ProductInterface[];
-  const productsByQueryParams = useFilterByQueryParams(products);
   const [searchParams] = useSearchParams();
+  const productsByFilters = filterByQueryParams(products, searchParams);
 
-  if (productsByQueryParams.length === 0) {
+  if (productsByFilters.length === 0) {
     return (
       <div className="d-flex align-items-center justify-content-center gap-3 mt-5">
         <IconInfo fill="#0d6efd" width={40} height={40} />
@@ -24,7 +24,7 @@ const ProductsList = () => {
   if (isBlock) {
     return (
       <div className="row row-cols-1 row-cols-lg-4 g-3">
-        {productsByQueryParams.map((product) => (
+        {productsByFilters.map((product) => (
           <ProductsItem key={product.id} product={product} />
         ))}
       </div>
@@ -46,7 +46,7 @@ const ProductsList = () => {
           </tr>
         </thead>
         <tbody className="table-group-divider">
-          {productsByQueryParams.map((product) => (
+          {productsByFilters.map((product) => (
             <ProductsRow key={product.id} product={product} />
           ))}
         </tbody>
