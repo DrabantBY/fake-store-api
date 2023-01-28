@@ -1,30 +1,14 @@
-import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import useHandleChangeValue from '../../hooks/useHandleChangeValue';
 
 const SelectSort = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [sort, setSort] = useState(searchParams.get('sort') ?? '');
-
-  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
-    const { value } = e.target;
-
-    setSort(value);
-
-    if (value) {
-      searchParams.set('sort', value);
-    } else {
-      searchParams.delete('sort');
-    }
-
-    setSearchParams(searchParams);
-  };
+  const [selectValue, handleSelectValue] = useHandleChangeValue('sort', '');
 
   return (
     <select
       className="form-select mb-3"
       aria-label="sort by price and rating"
-      onChange={handleChange}
-      value={sort}>
+      value={selectValue}
+      onChange={handleSelectValue}>
       <option value="">sort by default</option>
       <option value="rating-asc">sort by rating asc</option>
       <option value="rating-desc">sort by rating desc</option>

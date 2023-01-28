@@ -1,25 +1,16 @@
-import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import useHandleChangeValue from '../../hooks/useHandleChangeValue';
 import { ReactComponent as IconStar } from '../../assets/star-fill.svg';
 import type { RangeFilterDataType } from '../../type';
 
 const RangeFilter = (props: RangeFilterDataType) => {
   const { min, max, step, rangeId, init } = props;
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [state, setState] = useState(searchParams.get(rangeId) ?? init);
-
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { value } = e.target;
-    setState(value);
-    searchParams.set(rangeId, value);
-    setSearchParams(searchParams);
-  };
+  const [rangeValue, handleRangeValue] = useHandleChangeValue(rangeId, init);
 
   return (
     <>
       <label htmlFor={rangeId} className="form-label align-items-center d-flex gap-1">
-        {rangeId}:&nbsp;{state}
+        {rangeId}:&nbsp;{rangeValue}
         {rangeId.endsWith('Price') ? '$' : <IconStar fill="gold" />}
       </label>
       <input
@@ -29,8 +20,8 @@ const RangeFilter = (props: RangeFilterDataType) => {
         max={max}
         step={step}
         id={rangeId}
-        value={state}
-        onChange={handleChange}
+        value={rangeValue}
+        onChange={handleRangeValue}
       />
     </>
   );
