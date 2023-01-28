@@ -1,0 +1,21 @@
+:root {
+  --star-color: rgb(100, 25, 197);
+  --star-background: rgb(255, 217, 0);
+}
+
+.stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+}
+
+.stars::before {
+  content: '★★★★★';
+
+  background: linear-gradient(
+    90deg,
+    var(--bs-primary) var(--percent),
+    rgb(189, 192, 196) var(--percent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

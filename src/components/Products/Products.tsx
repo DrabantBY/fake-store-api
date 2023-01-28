@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Categories from './Categories';
-import ProductsView from './ProductsView';
-import RangeFilter from './RangeFilter';
-import ResetFilters from './ResetFilters';
-import SearchForm from './SearchForm';
-import SelectSort from './SelectSort';
+import ProductsView from './Filters/ProductsView';
+import RangeFilter from './Filters/RangeFilter';
+import ResetFilters from './Filters/ResetFilters';
+import SearchForm from './Filters/SearchForm';
+import SelectSort from './Filters/SelectSort';
 
 const Products = () => {
   return (

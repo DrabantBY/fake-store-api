@@ -1,6 +1,6 @@
-import useHandleChangeValue from '../../hooks/useHandleChangeValue';
-import { ReactComponent as IconStar } from '../../assets/star-fill.svg';
-import type { RangeFilterDataType } from '../../type';
+import useHandleChangeValue from '../../../hooks/useHandleChangeValue';
+import { ReactComponent as IconStar } from '../../../assets/star-fill.svg';
+import type { RangeFilterDataType } from '../../../type';
 
 const RangeFilter = (props: RangeFilterDataType) => {
   const { min, max, step, rangeId, init } = props;
