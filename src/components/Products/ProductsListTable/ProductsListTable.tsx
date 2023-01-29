@@ -1,13 +1,12 @@
 import { ProductInterface } from '../../../type';
-import ProductsRow from './ProductsRow';
+import ProductsListRow from './ProductsListRow';
 
 const ProductsListTable = (props: { productsByFilters: ProductInterface[] }) => {
   const { productsByFilters } = props;
 
   return (
     <div className="table-responsive">
-      <table className="table caption-top table-striped table align-middle">
-        <caption className="fs-4">List of products</caption>
+      <table className="table table-striped table align-middle">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -20,7 +19,7 @@ const ProductsListTable = (props: { productsByFilters: ProductInterface[] }) => 
         </thead>
         <tbody className="table-group-divider">
           {productsByFilters.map((product) => (
-            <ProductsRow key={product.id} product={product} />
+            <ProductsListRow key={product.id} product={product} />
           ))}
         </tbody>
       </table>

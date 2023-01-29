@@ -14,19 +14,21 @@ const ProductsView = () => {
   };
 
   return (
-    <div className="list-group list-group-horizontal mb-3">
-      <button
-        type="button"
-        className={`list-group-item list-group-item-action text-center${isBlock ? ' active' : ''}`}
-        onClick={() => handleClick('block')}>
-        <IconBlock className="mb-1" />
-      </button>
-      <button
-        type="button"
-        className={`list-group-item list-group-item-action text-center${isBlock ? '' : ' active'}`}
-        onClick={() => handleClick('table')}>
-        <IconTable className="mb-1" />
-      </button>
+    <div className="d-grid mb-3">
+      <div className="btn-group">
+        <button
+          type="button"
+          className={`btn btn-outline-primary${isBlock ? ' active' : ''}`}
+          onClick={() => handleClick('block')}>
+          <IconBlock className="mb-1" />
+        </button>
+        <button
+          type="button"
+          className={`btn btn-outline-primary${isBlock ? '' : ' active'}`}
+          onClick={() => handleClick('table')}>
+          <IconTable className="mb-1" />
+        </button>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import ProductsControls from '../ProductsControls';
 
 import type { ProductInterface } from '../../../type';
 
-const ProductsItem = (props: { product: ProductInterface }) => {
+const ProductsListItem = (props: { product: ProductInterface }) => {
   const { product } = props;
   const { id, thumbnail, title, price, rating } = product;
   const style = { '--rating': rating } as React.CSSProperties;
@@ -10,7 +10,7 @@ const ProductsItem = (props: { product: ProductInterface }) => {
   return (
     <div className="col">
       <div className="card shadow">
-        <div style={{ width: '100%', height: '200px' }} className="overflow-hidden">
+        <div style={{ width: '100%', height: '120px' }} className="overflow-hidden">
           <img
             src={thumbnail}
             className="card-img-top border rounded object-fit-cover"
@@ -32,4 +32,4 @@ const ProductsItem = (props: { product: ProductInterface }) => {
   );
 };
 
-export default ProductsItem;
+export default ProductsListItem;

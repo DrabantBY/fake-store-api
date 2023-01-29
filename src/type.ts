@@ -19,3 +19,10 @@ export type RangeFilterDataType = {
   rangeId: string;
   init: number;
 };
+
+export type ProductsResponseType = {
+  products: ProductInterface[];
+  total: number;
+  skip: number;
+  limit: number;
+};

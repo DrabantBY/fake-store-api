@@ -4,6 +4,7 @@ import loaderProductsList from './loaders/loaderProductsList';
 import loaderProductsCategory from './loaders/loaderProductsCategory';
 import Products from './components/Products/Products';
 import ProductsList from './components/Products/ProductsList';
+import ProductsItem from './components/ProductsItem/ProductsItem';
 
 const router = createBrowserRouter([
   {
@@ -11,20 +12,14 @@ const router = createBrowserRouter([
     element: <MainPage />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <Products />,
-        children: [
-          {
-            index: true,
-            element: <ProductsList />,
-            loader: loaderProductsList,
-          },
-          {
-            path: '/category/:category',
-            element: <ProductsList />,
-            loader: loaderProductsCategory,
-          },
-        ],
+        loader: loaderProductsList,
+      },
+      {
+        path: 'products/:id',
+        element: <ProductsItem />,
+        // loader: loaderProductsCategory,
       },
     ],
   },

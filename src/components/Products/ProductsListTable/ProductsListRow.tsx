@@ -1,7 +1,7 @@
 import ProductsControls from '../ProductsControls';
 import type { ProductInterface } from '../../../type';
 
-const ProductsRow = (props: { product: ProductInterface }) => {
+const ProductsListRow = (props: { product: ProductInterface }) => {
   const { product } = props;
   const { id, title, price, rating, thumbnail } = product;
   const style = { '--rating': rating } as React.CSSProperties;
@@ -31,4 +31,4 @@ const ProductsRow = (props: { product: ProductInterface }) => {
     </tr>
   );
 };
-export default ProductsRow;
+export default ProductsListRow;
