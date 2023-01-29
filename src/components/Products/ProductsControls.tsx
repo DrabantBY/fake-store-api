@@ -5,7 +5,7 @@ import { ReactComponent as IconCartCheck } from '../../assets/cart-check.svg';
 import { ReactComponent as IconCartX } from '../../assets/cart-x.svg';
 import { ProductInterface } from '../../type';
 
-const ProductControls: React.FC<{ product: ProductInterface }> = ({ product }) => {
+const ProductsControls: React.FC<{ product: ProductInterface }> = ({ product }) => {
   return (
     <div className="btn-group">
       <Link
@@ -22,4 +22,4 @@ const ProductControls: React.FC<{ product: ProductInterface }> = ({ product }) =
   );
 };
 
-export default ProductControls;
+export default ProductsControls;

@@ -1,5 +1,5 @@
-import ProductControls from './ProductControls';
-import type { ProductInterface } from '../../type';
+import ProductsControls from '../ProductsControls';
+import type { ProductInterface } from '../../../type';
 
 const ProductsRow = (props: { product: ProductInterface }) => {
   const { product } = props;
@@ -18,7 +18,7 @@ const ProductsRow = (props: { product: ProductInterface }) => {
           />
         </div>
       </td>
-      <td>{title}</td>
+      <td className="fs-5">{title}</td>
       <td>
         <span className="stars d-flex align-items-center gap-2 fs-5" style={style}>
           {rating}
@@ -26,7 +26,7 @@ const ProductsRow = (props: { product: ProductInterface }) => {
       </td>
       <td className="fs-4">{price}$</td>
       <td>
-        <ProductControls product={product} />
+        <ProductsControls product={product} />
       </td>
     </tr>
   );
