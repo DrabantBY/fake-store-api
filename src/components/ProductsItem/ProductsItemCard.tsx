@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
 import { ProductInterface } from '../../type';
 
 const ProductsItemCard = (props: { product: ProductInterface }) => {
   const { product } = props;
   const { id, title, description, rating, brand, category, price } = product;
+  const [isCartItem, setCartItem] = useHandleAddCartItem(product);
 
   const navigate = useNavigate();
 
@@ -31,10 +33,10 @@ const ProductsItemCard = (props: { product: ProductInterface }) => {
       </ul>
       <div className="card-footer btn-group">
         <button type="button" className="btn btn-outline-primary" onClick={() => navigate(-1)}>
-          go back
+          back
         </button>
-        <button type="button" className="btn btn-outline-primary">
-          add to cart
+        <button type="button" className="btn btn-outline-primary" onClick={setCartItem}>
+          {isCartItem ? 'remove' : 'add'}
         </button>
       </div>
     </div>
