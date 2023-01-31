@@ -6,10 +6,10 @@ import GoodsNotFound from './GoodsNotFound';
 import Spinner from './Spinner';
 import filterByQueryParams from '../../helpers/filterByQueryParams';
 
-import type { ProductInterface, ProductsResponseType } from '../../type';
+import type { ProductsResponseType } from '../../type';
 
 const ProductsList = () => {
-  const { response } = useLoaderData() as { response: Promise<ProductInterface> };
+  const { response } = useLoaderData() as { response: Promise<ProductsResponseType> };
   const [searchParams] = useSearchParams();
 
   return (

@@ -24,7 +24,7 @@ const ProductsListRow = (props: { product: ProductInterface }) => {
           {rating}
         </span>
       </td>
-      <td className="fs-4">{price}$</td>
+      <td className="fs-5">{price}$</td>
       <td>
         <ProductsControls product={product} />
       </td>

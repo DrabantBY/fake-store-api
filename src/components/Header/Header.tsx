@@ -1,27 +1,41 @@
 import { Link } from 'react-router-dom';
+import useCartState from '../../state';
 import { ReactComponent as Logo } from '../../assets/opencart.svg';
-import { ReactComponent as DollarIcon } from '../../assets/dollar-sign-solid.svg';
-import { ReactComponent as CartIcon } from '../../assets/cart-shopping-solid.svg';
+import { ReactComponent as CartIcon } from '../../assets/basket.svg';
 
-const Header = () => (
-  <header className="header">
-    <div className="container header__container">
-      <Link className="logo-link header__logo-link" to="/">
-        Good
-        <Logo height={50} fill="#a855f7" />
-        tore
-      </Link>
-      <Link className="cart-link header__cart-link" to="cart">
-        <span className="cart-icon header__cart-icon">
-          <CartIcon height={50} fill="#2563eb" />
-        </span>
-        &amp;
-        <span className="dollar-icon header__dollar-icon">
-          <DollarIcon height={50} fill="#2563eb" />
-        </span>
-      </Link>
-    </div>
-  </header>
-);
+const Header = () => {
+  const { getCartParams } = useCartState();
+
+  const { cartSize, cartSum } = getCartParams();
+
+  return (
+    <header className="header py-1 bg-dark">
+      <div className="container">
+        <nav className="navbar">
+          <Link
+            className="d-flex align-items-center fs-1 fw-semibold text-decoration-none position-relative"
+            to="/">
+            Good
+            <Logo height={40} fill="#a855f7" />
+            tore
+            {Boolean(cartSum) && (
+              <span className="position-absolute top-0 start-100 badge rounded-pill bg-primary text-white fs-6">
+                {cartSum}&nbsp;$
+              </span>
+            )}
+          </Link>
+          <Link className="btn btn-outline-primary position-relative me-3" to="cart">
+            <CartIcon height={25} width={25} />
+            {Boolean(cartSize) && (
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary text-white fs-7">
+                {cartSize}
+              </span>
+            )}
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

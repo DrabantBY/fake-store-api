@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import loaderProductsList from './loaders/loaderProductsList';
-import loaderProductsCategory from './loaders/loaderProductsCategory';
+import loaderProductsItem from './loaders/loaderProductsItem';
 import Products from './components/Products/Products';
-import ProductsList from './components/Products/ProductsList';
+
 import ProductsItem from './components/ProductsItem/ProductsItem';
 
 const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       {
         path: 'products/:id',
         element: <ProductsItem />,
-        // loader: loaderProductsCategory,
+        loader: loaderProductsItem,
       },
     ],
   },
