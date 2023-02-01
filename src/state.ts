@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { create } from 'zustand';
 import type { CartStateInterface } from './type';
 
@@ -29,6 +30,23 @@ const useCartState = create<CartStateInterface>((set, get) => ({
   isCartItem: (productId) => {
     const { cartState } = get();
     return cartState.some((cartItem) => cartItem.id === productId);
+  },
+
+  getCartItemNumber: (productId) => {
+    const { cartState } = get();
+    const currentItem = cartState.find((cartItem) => cartItem.id === productId);
+    return currentItem ? currentItem.cart : 0;
+  },
+
+  updateCartItemNumber: (productId, step) => {
+    const { cartState } = get();
+    const newCartState = cartState.map((cartItem) => {
+      if (cartItem.id === productId) {
+        cartItem.cart += step;
+      }
+      return cartItem;
+    });
+    set({ cartState: newCartState.filter((cartItem) => cartItem.cart !== 0) });
   },
 }));
 

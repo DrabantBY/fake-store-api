@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
-
 import { ReactComponent as IconEye } from '../../assets/eye.svg';
 import { ReactComponent as IconCartCheck } from '../../assets/cart-check.svg';
 import { ReactComponent as IconCartX } from '../../assets/cart-x.svg';
@@ -17,7 +16,6 @@ const ProductsControls = (props: { product: ProductInterface }) => {
         to={`products/${product.id}`}>
         <IconEye />
       </Link>
-
       <button
         type="button"
         className={`btn btn-${

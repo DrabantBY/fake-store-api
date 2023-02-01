@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container">
         <nav className="navbar navbar-text text-primary fw-bold fs-5">
           <a className="navbar-brand" href="https://itstep.by/" target="_blank" rel="noreferrer">
-            <StepLogo height={40} width={40} />
+            <StepLogo height={40} fill="#0d6efd" />
           </a>
           <span>© 2023 made by Eugene</span>
         </nav>

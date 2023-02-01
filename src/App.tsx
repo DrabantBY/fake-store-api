@@ -3,8 +3,8 @@ import MainPage from './pages/MainPage';
 import loaderProductsList from './loaders/loaderProductsList';
 import loaderProductsItem from './loaders/loaderProductsItem';
 import Products from './components/Products/Products';
-
 import ProductsItem from './components/ProductsItem/ProductsItem';
+import Cart from './components/Cart/Cart';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
         path: 'products/:id',
         element: <ProductsItem />,
         loader: loaderProductsItem,
+      },
+      {
+        path: 'cart',
+        element: <Cart />,
       },
     ],
   },

@@ -5,7 +5,6 @@ import ProductsListTable from './ProductsListTable/ProductsListTable';
 import GoodsNotFound from './GoodsNotFound';
 import Spinner from './Spinner';
 import filterByQueryParams from '../../helpers/filterByQueryParams';
-
 import type { ProductsResponseType } from '../../type';
 
 const ProductsList = () => {

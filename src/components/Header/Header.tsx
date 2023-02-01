@@ -16,7 +16,7 @@ const Header = () => {
             className="d-flex align-items-center fs-1 fw-semibold text-decoration-none position-relative"
             to="/">
             Good
-            <Logo height={40} fill="#a855f7" />
+            <Logo height={40} fill="#fff" />
             tore
             {Boolean(cartSum) && (
               <span className="position-absolute top-0 start-100 badge rounded-pill bg-primary text-white fs-6">

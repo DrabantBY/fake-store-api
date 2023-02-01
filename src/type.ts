@@ -11,18 +11,17 @@ export interface ProductInterface {
   thumbnail: string;
   images: string[];
 }
-
 export interface CartItemInterface extends ProductInterface {
   cart: number;
 }
-
 export interface CartStateInterface {
   cartState: CartItemInterface[];
-  // updateCartItem: (product: ProductInterface, step: 1 | -1) => void;
   removeCartItem: (productId: number) => void;
   addCartItem: (product: ProductInterface) => void;
   getCartParams: () => { cartSize: number; cartSum: number };
   isCartItem: (productId: number) => boolean;
+  getCartItemNumber: (productId: number) => number;
+  updateCartItemNumber: (productId: number, step: 1 | -1) => void;
 }
 
 export type RangeFilterDataType = {

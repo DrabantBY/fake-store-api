@@ -9,9 +9,7 @@ const ProductsPagination = () => {
 
   const handleClick = (step: 8 | -8) => {
     const nextSkip = skip + step;
-
     searchParams.set('skip', `${nextSkip}`);
-
     setSearchParams(searchParams);
   };
 
