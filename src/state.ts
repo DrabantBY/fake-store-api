@@ -1,53 +1,64 @@
 /* eslint-disable no-param-reassign */
-import { create } from 'zustand';
+import { create, StateCreator } from 'zustand';
+import { persist, PersistOptions } from 'zustand/middleware';
 import type { CartStateInterface } from './type';
 
-const useCartState = create<CartStateInterface>((set, get) => ({
-  cartState: [],
+type PersistStore = (
+  config: StateCreator<CartStateInterface>,
+  options: PersistOptions<CartStateInterface>
+) => StateCreator<CartStateInterface>;
 
-  addCartItem: (product) => {
-    const { cartState } = get();
-    set({ cartState: [...cartState, { ...product, cart: 1 }] });
-  },
+const useCartState = create<CartStateInterface>(
+  (persist as PersistStore)(
+    (set, get) => ({
+      cartState: [],
 
-  removeCartItem: (productId) => {
-    const { cartState } = get();
-    set({ cartState: cartState.filter((cartItem) => cartItem.id !== productId) });
-  },
-
-  getCartParams: () => {
-    const { cartState } = get();
-    return cartState.reduce(
-      (acc, item) => {
-        acc.cartSize += item.cart;
-        acc.cartSum += item.cart * item.price;
-        return acc;
+      addCartItem: (product) => {
+        const { cartState } = get();
+        set({ cartState: [...cartState, { ...product, cart: 1 }] });
       },
-      { cartSize: 0, cartSum: 0 }
-    );
-  },
 
-  isCartItem: (productId) => {
-    const { cartState } = get();
-    return cartState.some((cartItem) => cartItem.id === productId);
-  },
+      removeCartItem: (productId) => {
+        const { cartState } = get();
+        set({ cartState: cartState.filter((cartItem) => cartItem.id !== productId) });
+      },
 
-  getCartItemNumber: (productId) => {
-    const { cartState } = get();
-    const currentItem = cartState.find((cartItem) => cartItem.id === productId);
-    return currentItem ? currentItem.cart : 0;
-  },
+      getCartParams: () => {
+        const { cartState } = get();
+        return cartState.reduce(
+          (acc, item) => {
+            acc.cartSize += item.cart;
+            acc.cartSum += item.cart * item.price;
+            return acc;
+          },
+          { cartSize: 0, cartSum: 0 }
+        );
+      },
 
-  updateCartItemNumber: (productId, step) => {
-    const { cartState } = get();
-    const newCartState = cartState.map((cartItem) => {
-      if (cartItem.id === productId) {
-        cartItem.cart += step;
-      }
-      return cartItem;
-    });
-    set({ cartState: newCartState.filter((cartItem) => cartItem.cart !== 0) });
-  },
-}));
+      isCartItem: (productId) => {
+        const { cartState } = get();
+        return cartState.some((cartItem) => cartItem.id === productId);
+      },
+
+      getCartItemNumber: (productId) => {
+        const { cartState } = get();
+        const currentItem = cartState.find((cartItem) => cartItem.id === productId);
+        return currentItem ? currentItem.cart : 0;
+      },
+
+      updateCartItemNumber: (productId, step) => {
+        const { cartState } = get();
+        const newCartState = cartState.map((cartItem) => {
+          if (cartItem.id === productId) {
+            cartItem.cart += step;
+          }
+          return cartItem;
+        });
+        set({ cartState: newCartState.filter((cartItem) => cartItem.cart !== 0) });
+      },
+    }),
+    { name: 'cart-store' }
+  )
+);
 
 export default useCartState;
