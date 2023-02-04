@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import useCartState from '../../state';
+import { useCartState } from '../../state';
 
 const CartPagination = () => {
   const { cartState } = useCartState();

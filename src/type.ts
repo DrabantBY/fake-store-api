@@ -38,3 +38,20 @@ export type ProductsResponseType = {
   skip: number;
   limit: number;
 };
+
+export interface UserLoginInterface {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
+  token: string;
+}
+
+export interface LoginStateInterface {
+  user: null | UserLoginInterface;
+  getUserLoginData: (username: string, password: string) => void;
+  clearUserLoginData: () => void;
+}

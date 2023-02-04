@@ -1,4 +1,4 @@
-import useCartState from '../../state';
+import { useCartState } from '../../state';
 import { ReactComponent as IconArrowPrev } from '../../assets/arrow-left-square.svg';
 import { ReactComponent as IconArrowNext } from '../../assets/arrow-right-square.svg';
 import { CartItemInterface } from '../../type';

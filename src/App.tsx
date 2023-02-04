@@ -5,6 +5,7 @@ import loaderProductsItem from './loaders/loaderProductsItem';
 import Products from './components/Products/Products';
 import ProductsItem from './components/ProductsItem/ProductsItem';
 import Cart from './components/Cart/Cart';
+import Login from './components/Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
       },
     ],
   },

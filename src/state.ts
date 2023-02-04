@@ -1,15 +1,11 @@
-/* eslint-disable no-param-reassign */
 import { create, StateCreator } from 'zustand';
 import { persist, PersistOptions } from 'zustand/middleware';
-import type { CartStateInterface } from './type';
+import type { CartStateInterface, LoginStateInterface, UserLoginInterface } from './type';
 
-type PersistStore = (
-  config: StateCreator<CartStateInterface>,
-  options: PersistOptions<CartStateInterface>
-) => StateCreator<CartStateInterface>;
+type PersistStore<T> = (config: StateCreator<T>, options: PersistOptions<T>) => StateCreator<T>;
 
 const useCartState = create<CartStateInterface>(
-  (persist as PersistStore)(
+  (persist as PersistStore<CartStateInterface>)(
     (set, get) => ({
       cartState: [],
 
@@ -50,7 +46,9 @@ const useCartState = create<CartStateInterface>(
         const { cartState } = get();
         const newCartState = cartState.map((cartItem) => {
           if (cartItem.id === productId) {
-            cartItem.cart += step;
+            const value = cartItem.cart + step;
+            const newCartItem = { ...cartItem, cart: value };
+            return newCartItem;
           }
           return cartItem;
         });
@@ -61,4 +59,25 @@ const useCartState = create<CartStateInterface>(
   )
 );
 
-export default useCartState;
+const useLoginState = create<LoginStateInterface>(
+  (persist as PersistStore<LoginStateInterface>)(
+    (set) => ({
+      user: null,
+
+      getUserLoginData: async (username, password) => {
+        const options = {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        };
+        const response = await fetch('https://dummyjson.com/auth/login', options);
+        const user = (await response.json()) as UserLoginInterface;
+        set({ user });
+      },
+      clearUserLoginData: () => set({ user: null }),
+    }),
+    { name: 'login-store' }
+  )
+);
+
+export { useCartState, useLoginState };
