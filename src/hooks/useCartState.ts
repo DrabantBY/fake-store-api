@@ -1,8 +1,6 @@
-import { create, StateCreator } from 'zustand';
-import { persist, PersistOptions } from 'zustand/middleware';
-import type { CartStateInterface, LoginStateInterface, UserLoginInterface } from './type';
-
-type PersistStore<T> = (config: StateCreator<T>, options: PersistOptions<T>) => StateCreator<T>;
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { CartStateInterface, PersistStore } from '../types';
 
 const useCartState = create<CartStateInterface>(
   (persist as PersistStore<CartStateInterface>)(
@@ -59,38 +57,4 @@ const useCartState = create<CartStateInterface>(
   )
 );
 
-const useLoginState = create<LoginStateInterface>(
-  (persist as PersistStore<LoginStateInterface>)(
-    (set) => ({
-      user: null,
-
-      // loading: false,
-
-      error: null,
-
-      getUserLoginData: async (formData) => {
-        // set({ loading: true });
-        const options = {
-          method: 'POST',
-          headers: { 'Content-type': 'application/json' },
-          body: JSON.stringify(formData),
-        };
-        try {
-          const response = await fetch('https://dummyjson.com/auth/login', options);
-          if (!response.ok) throw new Error('Authentication error');
-          const user = (await response.json()) as UserLoginInterface;
-          set({ user });
-        } catch (err) {
-          set({ error: (err as Error).message });
-        }
-        // finally {
-        //   set({ loading: false });
-        // }
-      },
-      clearUserLoginData: () => set({ user: null }),
-    }),
-    { name: 'login-store' }
-  )
-);
-
-export { useCartState, useLoginState };
+export default useCartState;

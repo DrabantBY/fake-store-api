@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import ProductsListRow from '../Products/ProductsListRow';
-import type { CartItemInterface } from '../../type';
+import type { CartItemInterface } from '../../types';
 
 const CartListBody = (props: { products: CartItemInterface[] }) => {
   const { products } = props;

@@ -1,4 +1,4 @@
-import { useLoginState } from '../../state';
+import useLoginState from '../../hooks/useLoginState';
 
 const SignUp = () => {
   const { clearUserLoginData } = useLoginState();

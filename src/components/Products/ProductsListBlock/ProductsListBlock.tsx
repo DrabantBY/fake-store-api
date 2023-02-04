@@ -1,4 +1,4 @@
-import { ProductInterface } from '../../../type';
+import { ProductInterface } from '../../../types';
 import ProductsListItem from './ProductsListItem';
 
 const ProductsListBlock = (props: { productsByFilters: ProductInterface[] }) => {

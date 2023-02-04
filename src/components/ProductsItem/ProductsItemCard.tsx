@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
+import useLoginState from '../../hooks/useLoginState';
 import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
-import { ProductInterface } from '../../type';
+import { ProductInterface } from '../../types';
 
 const ProductsItemCard = (props: { product: ProductInterface }) => {
   const { product } = props;
   const { id, title, description, rating, brand, category, price } = product;
   const [isCartItem, setCartItem] = useHandleAddCartItem(product);
-
+  const { user } = useLoginState();
   const navigate = useNavigate();
 
   const style = { '--rating': rating } as React.CSSProperties;
@@ -35,8 +36,17 @@ const ProductsItemCard = (props: { product: ProductInterface }) => {
         <button type="button" className="btn btn-outline-primary" onClick={() => navigate(-1)}>
           back
         </button>
-        <button type="button" className="btn btn-outline-primary" onClick={setCartItem}>
-          {isCartItem ? 'remove' : 'add'}
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={() => {
+            if (user) {
+              setCartItem();
+            } else {
+              navigate('/login');
+            }
+          }}>
+          {isCartItem && user ? 'remove' : 'add'}
         </button>
       </div>
     </div>

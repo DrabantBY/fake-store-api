@@ -1,9 +1,9 @@
 import { useNavigate, Link } from 'react-router-dom';
-import { useCartState } from '../../state';
+import useCartState from '../../hooks/useCartState';
 import TableHeaders from '../Products/TableHeaders';
 import CartPagination from './CartPagination';
 import CartListBody from './CartListBody';
-import type { CartItemInterface } from '../../type';
+import type { CartItemInterface } from '../../types';
 
 const CartList = (props: { products: CartItemInterface[] }) => {
   const { products } = props;

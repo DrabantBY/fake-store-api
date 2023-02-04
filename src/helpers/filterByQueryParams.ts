@@ -2,7 +2,7 @@ import filterByRatingPrice from './filterByRatingPrice';
 import filterBySearch from './filterBySearch';
 import sortByQueryParams from './sortByQueryParams';
 import filterByCategory from './filterByCategory';
-import type { ProductInterface } from '../type';
+import type { ProductInterface } from '../types';
 
 const filterByQueryParams = (products: ProductInterface[], searchParams: URLSearchParams) => {
   const search = searchParams.get('search') ?? '';

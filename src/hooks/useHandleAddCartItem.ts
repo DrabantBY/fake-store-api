@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useCartState } from '../state';
-import { ProductInterface } from '../type';
+import useCartState from './useCartState';
+import { ProductInterface } from '../types';
 
 const useHandleAddCartItem = (product: ProductInterface): [boolean, () => void] => {
   const [removeCartItem, addCartItem, isCartItem] = useCartState((state) => [

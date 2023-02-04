@@ -5,7 +5,7 @@ import ProductsListTable from './ProductsListTable/ProductsListTable';
 import GoodsNotFound from './GoodsNotFound';
 import Spinner from './Spinner';
 import filterByQueryParams from '../../helpers/filterByQueryParams';
-import type { ProductsResponseType } from '../../type';
+import type { ProductsResponseType } from '../../types';
 
 const ProductsList = () => {
   const { response } = useLoaderData() as { response: Promise<ProductsResponseType> };

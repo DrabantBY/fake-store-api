@@ -1,6 +1,6 @@
 import ProductsControls from './ProductsControls';
 import CartItemsControls from '../Cart/CartItemsControls';
-import type { CartItemInterface, ProductInterface } from '../../type';
+import type { CartItemInterface, ProductInterface } from '../../types';
 
 const ProductsListRow = (props: {
   product: ProductInterface | CartItemInterface;

@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
+import useLoginState from '../../hooks/useLoginState';
 import { ReactComponent as IconEye } from '../../assets/eye.svg';
 import { ReactComponent as IconCartCheck } from '../../assets/cart-check.svg';
 import { ReactComponent as IconCartX } from '../../assets/cart-x.svg';
-import { ProductInterface } from '../../type';
+import { ProductInterface } from '../../types';
 
 const ProductsControls = (props: { product: ProductInterface }) => {
   const { product } = props;
   const [isCartItem, setCartItem] = useHandleAddCartItem(product);
+  const { user } = useLoginState();
+  const navigate = useNavigate();
 
   return (
     <div className="btn-group">
@@ -19,10 +22,16 @@ const ProductsControls = (props: { product: ProductInterface }) => {
       <button
         type="button"
         className={`btn btn-${
-          isCartItem ? 'success' : 'primary'
+          isCartItem && user ? 'success' : 'primary'
         } d-inline-flex justify-content-center align-items-center`}
-        onClick={setCartItem}>
-        {isCartItem ? <IconCartX /> : <IconCartCheck />}
+        onClick={() => {
+          if (user) {
+            setCartItem();
+          } else {
+            navigate('/login');
+          }
+        }}>
+        {isCartItem && user ? <IconCartX /> : <IconCartCheck />}
       </button>
     </div>
   );
