@@ -52,6 +52,10 @@ export interface UserLoginInterface {
 
 export interface LoginStateInterface {
   user: null | UserLoginInterface;
-  getUserLoginData: (username: string, password: string) => void;
+  // loading: boolean;
+  error: null | string;
+  getUserLoginData: (formData: FormData) => void;
   clearUserLoginData: () => void;
 }
+
+type FormData = { username: string; password: string };

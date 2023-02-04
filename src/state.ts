@@ -64,15 +64,28 @@ const useLoginState = create<LoginStateInterface>(
     (set) => ({
       user: null,
 
-      getUserLoginData: async (username, password) => {
+      // loading: false,
+
+      error: null,
+
+      getUserLoginData: async (formData) => {
+        // set({ loading: true });
         const options = {
           method: 'POST',
           headers: { 'Content-type': 'application/json' },
-          body: JSON.stringify({ username, password }),
+          body: JSON.stringify(formData),
         };
-        const response = await fetch('https://dummyjson.com/auth/login', options);
-        const user = (await response.json()) as UserLoginInterface;
-        set({ user });
+        try {
+          const response = await fetch('https://dummyjson.com/auth/login', options);
+          if (!response.ok) throw new Error('Authentication error');
+          const user = (await response.json()) as UserLoginInterface;
+          set({ user });
+        } catch (err) {
+          set({ error: (err as Error).message });
+        }
+        // finally {
+        //   set({ loading: false });
+        // }
       },
       clearUserLoginData: () => set({ user: null }),
     }),

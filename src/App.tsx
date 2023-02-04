@@ -5,7 +5,7 @@ import loaderProductsItem from './loaders/loaderProductsItem';
 import Products from './components/Products/Products';
 import ProductsItem from './components/ProductsItem/ProductsItem';
 import Cart from './components/Cart/Cart';
-import Login from './components/Login/Login';
+import LoginForm from './components/LoginForm/LoginForm';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <Login />,
+        element: <LoginForm />,
       },
     ],
   },
