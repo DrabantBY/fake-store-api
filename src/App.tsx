@@ -6,6 +6,8 @@ import Products from './components/Products/Products';
 import ProductsItem from './components/ProductsItem/ProductsItem';
 import Cart from './components/Cart/Cart';
 import LoginForm from './components/LoginForm/LoginForm';
+import ErrorPage from './pages/ErrorPage';
+import Error from './components/Error/Error';
 
 const router = createBrowserRouter([
   {
@@ -16,11 +18,13 @@ const router = createBrowserRouter([
         index: true,
         element: <Products />,
         loader: loaderProductsList,
+        errorElement: <Error />,
       },
       {
         path: 'products/:id',
         element: <ProductsItem />,
         loader: loaderProductsItem,
+        errorElement: <Error />,
       },
       {
         path: 'cart',
@@ -29,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginForm />,
+      },
+      {
+        path: '*',
+        element: <ErrorPage />,
       },
     ],
   },

@@ -31,6 +31,7 @@ const useLoginState = create<LoginStateInterface>(
       },
       clearUserLoginData: () => set({ user: null }),
       isUser: () => Boolean(get().user),
+      removeError: () => set({ error: null }),
     }),
     { name: 'login-store' }
   )

@@ -4,7 +4,6 @@ const getCategories = async () => {
     const categories = (await response.json()) as string[];
     return categories;
   } catch (err) {
-    console.error(err);
     return [];
   }
 };

@@ -53,6 +53,7 @@ export interface LoginStateInterface {
   getUserLoginData: (formData: FormData) => void;
   clearUserLoginData: () => void;
   isUser: () => boolean;
+  removeError: () => void;
 }
 
 export type RangeFilterDataType = {

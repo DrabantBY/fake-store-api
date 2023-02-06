@@ -7,7 +7,7 @@ const ProductsListRow = (props: {
   index: number;
 }) => {
   const { product, index } = props;
-  const { id, title, price, rating, thumbnail } = product;
+  const { title, price, rating, thumbnail } = product;
   const style = { '--rating': rating } as React.CSSProperties;
   return (
     <tr>
