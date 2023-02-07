@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as CartIcon } from '../../assets/basket.svg';
 
-const CartLink = (props: { cartSize: number }) => {
-  const { cartSize } = props;
+const CartLink = ({ cartSize }: { cartSize: number }) => {
   return (
     <Link className="btn btn-outline-primary position-relative me-3" to="cart">
       <CartIcon height={25} width={25} />
@@ -14,4 +13,5 @@ const CartLink = (props: { cartSize: number }) => {
     </Link>
   );
 };
+
 export default CartLink;

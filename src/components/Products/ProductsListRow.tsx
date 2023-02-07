@@ -2,11 +2,13 @@ import ProductsControls from './ProductsControls';
 import CartItemsControls from '../Cart/CartItemsControls';
 import type { CartItemInterface, ProductInterface } from '../../types';
 
-const ProductsListRow = (props: {
+const ProductsListRow = ({
+  product,
+  index,
+}: {
   product: ProductInterface | CartItemInterface;
   index: number;
 }) => {
-  const { product, index } = props;
   const { title, price, rating, thumbnail } = product;
   const style = { '--rating': rating } as React.CSSProperties;
   return (
@@ -31,7 +33,7 @@ const ProductsListRow = (props: {
       <td className="fs-5">{price}$</td>
       <td>
         {'cart' in product ? (
-          <CartItemsControls product={product} />
+          <CartItemsControls id={product.id} />
         ) : (
           <ProductsControls product={product} />
         )}

@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import ProductsControls from '../ProductsControls';
 import type { ProductInterface } from '../../../types';
 
-const ProductsListItem = (props: { product: ProductInterface }) => {
-  const { product } = props;
+const ProductsListItem = ({ product }: { product: ProductInterface }) => {
   const { id, thumbnail, title, price, rating } = product;
   const style = { '--rating': rating } as React.CSSProperties;
 

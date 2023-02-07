@@ -1,9 +1,7 @@
 import ProductsListRow from '../ProductsListRow';
 import type { ProductInterface } from '../../../types';
 
-const TableBody = (props: { products: ProductInterface[] }) => {
-  const { products } = props;
-
+const TableBody = ({ products }: { products: ProductInterface[] }) => {
   return (
     <tbody className="table-group-divider">
       {products.map((product, index) => (

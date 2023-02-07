@@ -5,8 +5,7 @@ import CartPagination from './CartPagination';
 import CartListBody from './CartListBody';
 import type { CartItemInterface } from '../../types';
 
-const CartList = (props: { products: CartItemInterface[] }) => {
-  const { products } = props;
+const CartList = ({ products }: { products: CartItemInterface[] }) => {
   const navigate = useNavigate();
   const { getCartParams } = useCartState();
   const { cartSum } = getCartParams();
@@ -23,7 +22,7 @@ const CartList = (props: { products: CartItemInterface[] }) => {
       </div>
       <div className="btn-group">
         <button type="button" className="btn btn-primary" onClick={() => navigate(-1)}>
-          go back
+          back
         </button>
         <button type="button" className="btn btn-primary" disabled>
           Total: {cartSum}$

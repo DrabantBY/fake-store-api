@@ -25,7 +25,7 @@ const ResetFilters = () => {
   };
 
   return (
-    <div className="d-grid mb-3">
+    <div className="d-grid">
       <button type="button" className="btn btn-outline-primary d-grid" onClick={handleClick}>
         Reset Filters
       </button>

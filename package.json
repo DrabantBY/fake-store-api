@@ -12,10 +12,9 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "formik": "^2.2.9",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0",
+    "react-router-dom": "^6.8.1",
     "swiper": "^8.4.7",
     "yup": "^0.32.11",
     "zustand": "^4.3.2"

@@ -2,8 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import ProductsListRow from '../Products/ProductsListRow';
 import type { CartItemInterface } from '../../types';
 
-const CartListBody = (props: { products: CartItemInterface[] }) => {
-  const { products } = props;
+const CartListBody = ({ products }: { products: CartItemInterface[] }) => {
   const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page') ?? 1);
   const currentTotal = Number(searchParams.get('total') ?? 3);

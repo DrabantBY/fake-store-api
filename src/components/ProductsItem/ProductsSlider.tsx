@@ -4,8 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const ProductsSlider = (props: { images: string[] }) => {
-  const { images } = props;
+const ProductsSlider = ({ images }: { images: string[] }) => {
   return (
     <Swiper
       spaceBetween={0}

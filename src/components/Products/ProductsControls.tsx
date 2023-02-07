@@ -6,8 +6,7 @@ import { ReactComponent as IconCartCheck } from '../../assets/cart-check.svg';
 import { ReactComponent as IconCartX } from '../../assets/cart-x.svg';
 import { ProductInterface } from '../../types';
 
-const ProductsControls = (props: { product: ProductInterface }) => {
-  const { product } = props;
+const ProductsControls = ({ product }: { product: ProductInterface }) => {
   const [isCartItem, setCartItem] = useHandleAddCartItem(product);
   const { user } = useLoginState();
   const navigate = useNavigate();

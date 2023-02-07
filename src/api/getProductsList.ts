@@ -1,5 +1,5 @@
 const getProductsList = async (skip: number) => {
-  const response = await fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`);
+  const response = await fetch(`https://dummyjson.com/products?skip=0&limit=100`);
 
   if (!response.ok) {
     throw new Response('', { status: response.status, statusText: 'An error has occurred' });

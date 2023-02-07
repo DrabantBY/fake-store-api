@@ -23,6 +23,10 @@ const useHandleChangeValue = (
       searchParams.delete(queryParam);
     }
 
+    if (queryParam !== 'sort' && queryParam !== 'view') {
+      searchParams.delete('page');
+    }
+
     setSearchParams(searchParams);
   };
 

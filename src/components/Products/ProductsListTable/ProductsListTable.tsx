@@ -2,11 +2,9 @@ import { ProductInterface } from '../../../types';
 import TableHeaders from '../TableHeaders';
 import TableBody from './TableBody';
 
-const ProductsListTable = (props: { productsByFilters: ProductInterface[] }) => {
-  const { productsByFilters } = props;
-
+const ProductsListTable = ({ productsByFilters }: { productsByFilters: ProductInterface[] }) => {
   return (
-    <div className="table-responsive">
+    <div className="table-responsive mb-3">
       <table className="table table-striped table align-middle">
         <TableHeaders />
         <TableBody products={productsByFilters} />

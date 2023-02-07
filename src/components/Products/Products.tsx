@@ -5,7 +5,6 @@ import ResetFilters from './Filters/ResetFilters';
 import SearchForm from './Filters/SearchForm';
 import SelectSort from './Filters/SelectSort';
 import ProductsList from './ProductsList';
-import ProductsPagination from './ProductsPagination';
 
 const Products = () => {
   return (
@@ -26,9 +25,8 @@ const Products = () => {
         </div>
         <ProductsView />
         <ResetFilters />
-        <ProductsPagination />
       </div>
-      <div className="col-7 col-sm-8 col-lg-10">
+      <div className="col-7 col-sm-8 col-lg-10 d-flex flex-column justify-content-between">
         <ProductsList />
       </div>
     </div>

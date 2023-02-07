@@ -3,8 +3,7 @@ import useLoginState from '../../hooks/useLoginState';
 import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
 import { ProductInterface } from '../../types';
 
-const ProductsItemCard = (props: { product: ProductInterface }) => {
-  const { product } = props;
+const ProductsItemCard = ({ product }: { product: ProductInterface }) => {
   const { id, title, description, rating, brand, category, price } = product;
   const [isCartItem, setCartItem] = useHandleAddCartItem(product);
   const { user } = useLoginState();
