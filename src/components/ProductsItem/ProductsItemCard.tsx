@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import useLoginState from '../../hooks/useLoginState';
-import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
-import { ProductInterface } from '../../types';
+import useLoginState from '@hooks/useLoginState';
+import useHandleAddCartItem from '@hooks/useHandleAddCartItem';
+import type { ProductInterface } from '@/types';
 
 const ProductsItemCard = ({ product }: { product: ProductInterface }) => {
   const { id, title, description, rating, brand, category, price } = product;

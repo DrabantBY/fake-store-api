@@ -1,13 +1,13 @@
 import { useSearchParams } from 'react-router-dom';
 import ProductsListRow from '../Products/ProductsListRow';
-import type { CartItemInterface } from '../../types';
+import type { CartItemInterface } from '@/types';
 
-const CartListBody = ({ products }: { products: CartItemInterface[] }) => {
+const CartListBody = ({ products, items }: { products: CartItemInterface[]; items: number }) => {
   const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page') ?? 1);
-  const currentTotal = Number(searchParams.get('total') ?? 3);
-  const startIndex = (currentPage - 1) * currentTotal;
-  const endIndex = currentPage * currentTotal;
+
+  const startIndex = (currentPage - 1) * items;
+  const endIndex = currentPage * items;
 
   return (
     <tbody className="table-group-divider">

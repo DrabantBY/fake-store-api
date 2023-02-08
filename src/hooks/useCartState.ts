@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CartStateInterface, PersistStore } from '../types';
+import type { CartStateInterface, PersistStore } from '@/types';
 
 const useCartState = create<CartStateInterface>(
   (persist as PersistStore<CartStateInterface>)(

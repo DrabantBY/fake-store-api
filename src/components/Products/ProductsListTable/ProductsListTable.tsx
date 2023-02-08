@@ -1,4 +1,4 @@
-import { ProductInterface } from '../../../types';
+import type { ProductInterface } from '@/types';
 import TableHeaders from '../TableHeaders';
 import TableBody from './TableBody';
 

@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainPage from './pages/MainPage';
-import loaderProductsList from './loaders/loaderProductsList';
-import loaderProductsItem from './loaders/loaderProductsItem';
-import Products from './components/Products/Products';
-import ProductsItem from './components/ProductsItem/ProductsItem';
-import Cart from './components/Cart/Cart';
-import LoginForm from './components/LoginForm/LoginForm';
-import ErrorPage from './pages/ErrorPage';
-import Error from './components/Error/Error';
+import MainPage from '@pages/MainPage';
+import loaderProductsList from '@loaders/loaderProductsList';
+import loaderProductsItem from '@loaders/loaderProductsItem';
+import Products from '@components/Products/Products';
+import ProductsItem from '@components/ProductsItem/ProductsItem';
+import Cart from '@components/Cart/Cart';
+import LoginForm from '@components/LoginForm/LoginForm';
+import ErrorPage from '@pages/ErrorPage';
+import Error from '@components/Error/Error';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +34,7 @@ const router = createBrowserRouter([
         path: 'login',
         element: <LoginForm />,
       },
+
       {
         path: '*',
         element: <ErrorPage />,

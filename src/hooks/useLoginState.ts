@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { LoginStateInterface, PersistStore, UserLoginInterface } from '../types';
+import type { LoginStateInterface, PersistStore, UserLoginInterface } from '@/types';
 
 const useLoginState = create<LoginStateInterface>(
   (persist as PersistStore<LoginStateInterface>)(

@@ -1,4 +1,4 @@
-import { ReactComponent as IconInfo } from '../../assets/info-circle.svg';
+import { ReactComponent as IconInfo } from '@assets/info-circle.svg';
 
 const GoodsNotFound = () => (
   <div className="d-flex align-items-center justify-content-center gap-3">

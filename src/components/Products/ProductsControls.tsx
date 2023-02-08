@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import useHandleAddCartItem from '../../hooks/useHandleAddCartItem';
-import useLoginState from '../../hooks/useLoginState';
-import { ReactComponent as IconEye } from '../../assets/eye.svg';
-import { ReactComponent as IconCartCheck } from '../../assets/cart-check.svg';
-import { ReactComponent as IconCartX } from '../../assets/cart-x.svg';
-import { ProductInterface } from '../../types';
+import useHandleAddCartItem from '@hooks/useHandleAddCartItem';
+import useLoginState from '@hooks/useLoginState';
+import { ReactComponent as IconEye } from '@assets/eye.svg';
+import { ReactComponent as IconCartCheck } from '@assets/cart-check.svg';
+import { ReactComponent as IconCartX } from '@assets/cart-x.svg';
+import type { ProductInterface } from '@/types';
 
 const ProductsControls = ({ product }: { product: ProductInterface }) => {
   const [isCartItem, setCartItem] = useHandleAddCartItem(product);

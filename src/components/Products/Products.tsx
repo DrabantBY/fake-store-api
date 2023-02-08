@@ -8,7 +8,7 @@ import ProductsList from './ProductsList';
 
 const Products = () => {
   return (
-    <div className="row">
+    <div className="row py-2">
       <div className="col-5 col-sm-4 col-lg-2">
         <SearchForm />
         <SelectCategory />

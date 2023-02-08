@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import useCartState from '../../hooks/useCartState';
+import useCartState from '@hooks/useCartState';
 
-const CartPagination = () => {
+const CartPagination = ({ items }: { items: number }) => {
   const { cartState } = useCartState();
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentPage = Number(searchParams.get('page') ?? 1);
-  const currentTotal = Number(searchParams.get('total') ?? 3);
 
-  const length = Math.ceil(cartState.length / currentTotal);
+  const currentPage = Number(searchParams.get('page') ?? 1);
+  const length = Math.ceil(cartState.length / items);
 
   const handleClick = (value: number) => {
     searchParams.set('page', `${value}`);

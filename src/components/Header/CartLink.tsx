@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as CartIcon } from '../../assets/basket.svg';
+import { ReactComponent as CartIcon } from '@assets/basket.svg';
 
 const CartLink = ({ cartSize }: { cartSize: number }) => {
   return (

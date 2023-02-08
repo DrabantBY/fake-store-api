@@ -1,4 +1,4 @@
-import type { ProductInterface } from '../types';
+import type { ProductInterface } from '@/types';
 
 const sortByQueryParams = (products: ProductInterface[], value: string) => {
   const [prop, direction] = value.split('-');

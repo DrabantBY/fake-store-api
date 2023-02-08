@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { ReactComponent as IconError } from '../../assets/exclamation-triangle.svg';
-import useLoginState from '../../hooks/useLoginState';
+import { ReactComponent as IconError } from '@assets/exclamation-triangle.svg';
+import useLoginState from '@hooks/useLoginState';
 
 const LoginForm = () => {
   const { loading, error, getUserLoginData, isUser, removeError } = useLoginState();

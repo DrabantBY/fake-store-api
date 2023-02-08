@@ -1,5 +1,5 @@
-import useLoginState from '../../hooks/useLoginState';
-import { ReactComponent as IconUser } from '../../assets/person-circle.svg';
+import useLoginState from '@hooks/useLoginState';
+import { ReactComponent as IconUser } from '@assets/person-circle.svg';
 
 const User = () => {
   const { user } = useLoginState();

@@ -1,4 +1,4 @@
-import type { ProductInterface } from '../types';
+import type { ProductInterface } from '@/types';
 
 const filterByCategory = (product: ProductInterface, key: string) => {
   if (!key) return true;

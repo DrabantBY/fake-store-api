@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { useLoaderData, Await } from 'react-router-dom';
+import type { ProductInterface } from '@/types';
 import Spinner from '../Products/Spinner';
 import ProductsItemCard from './ProductsItemCard';
-import { ProductInterface } from '../../types';
 import ProductsSlider from './ProductsSlider';
 
 const ProductsItem = () => {

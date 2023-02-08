@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import ProductsControls from './ProductsControls';
 import CartItemsControls from '../Cart/CartItemsControls';
-import type { CartItemInterface, ProductInterface } from '../../types';
+import type { CartItemInterface, ProductInterface } from '@/types';
 
 const ProductsListRow = ({
   product,
@@ -9,20 +10,23 @@ const ProductsListRow = ({
   product: ProductInterface | CartItemInterface;
   index: number;
 }) => {
-  const { title, price, rating, thumbnail } = product;
+  const { id, title, price, rating, thumbnail } = product;
   const style = { '--rating': rating } as React.CSSProperties;
   return (
     <tr>
       <th scope="row">{index}</th>
       <td>
-        <div className="rounded-circle overflow-hidden" style={{ width: '80px', height: '80px' }}>
+        <Link
+          to={`/products/${id}`}
+          className="rounded-circle overflow-hidden d-block"
+          style={{ width: '80px', height: '80px' }}>
           <img
             className="object-fit-cover"
             src={thumbnail}
             alt="thumbnail"
             style={{ width: '100%' }}
           />
-        </div>
+        </Link>
       </td>
       <td className="fs-5">{title}</td>
       <td>
@@ -32,11 +36,7 @@ const ProductsListRow = ({
       </td>
       <td className="fs-5">{price}$</td>
       <td>
-        {'cart' in product ? (
-          <CartItemsControls id={product.id} />
-        ) : (
-          <ProductsControls product={product} />
-        )}
+        {'cart' in product ? <CartItemsControls id={id} /> : <ProductsControls product={product} />}
       </td>
     </tr>
   );

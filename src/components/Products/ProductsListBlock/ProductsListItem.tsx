@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ProductsControls from '../ProductsControls';
-import type { ProductInterface } from '../../../types';
+import type { ProductInterface } from '@/types';
 
 const ProductsListItem = ({ product }: { product: ProductInterface }) => {
   const { id, thumbnail, title, price, rating } = product;

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import useLoginState from '../../hooks/useLoginState';
+import useLoginState from '@hooks/useLoginState';
 
 const SignUp = () => {
   const clearUserLoginData = useLoginState((state) => state.clearUserLoginData);

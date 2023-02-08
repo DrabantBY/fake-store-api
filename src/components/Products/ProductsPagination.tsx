@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
-import { ReactComponent as IconArrowPrev } from '../../assets/arrow-left-square.svg';
-import { ReactComponent as IconArrowNext } from '../../assets/arrow-right-square.svg';
+import { ReactComponent as IconArrowPrev } from '@assets/arrow-left-square.svg';
+import { ReactComponent as IconArrowNext } from '@assets/arrow-right-square.svg';
 
 const ProductsPagination = ({ page, pageNumber }: { page: number; pageNumber: number }) => {
   const [searchParams, setSearchParams] = useSearchParams();

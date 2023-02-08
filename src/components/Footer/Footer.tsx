@@ -1,4 +1,4 @@
-import { ReactComponent as StepLogo } from '../../assets/logo.svg';
+import { ReactComponent as StepLogo } from '@assets/logo.svg';
 
 const Footer = () => {
   return (

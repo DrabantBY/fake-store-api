@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import useHandleChangeValue from '../../../hooks/useHandleChangeValue';
-import getCategories from '../../../api/getCategories';
+import useHandleChangeValue from '@hooks/useHandleChangeValue';
+import getCategories from '@api/getCategories';
 
 const SelectCategory = () => {
   const [categories, setCategories] = useState<string[]>([]);

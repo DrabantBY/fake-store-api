@@ -1,6 +1,6 @@
-import useCartState from '../../hooks/useCartState';
-import { ReactComponent as IconArrowPrev } from '../../assets/arrow-left-square.svg';
-import { ReactComponent as IconArrowNext } from '../../assets/arrow-right-square.svg';
+import useCartState from '@hooks/useCartState';
+import { ReactComponent as IconArrowPrev } from '@assets/arrow-left-square.svg';
+import { ReactComponent as IconArrowNext } from '@assets/arrow-right-square.svg';
 
 const CartItemsControls = ({ id }: { id: number }) => {
   const [getCartItemNumber, updateCartItemNumber] = useCartState((state) => [

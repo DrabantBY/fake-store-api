@@ -1,4 +1,4 @@
-const getProductsList = async (skip: number) => {
+const getProductsList = async () => {
   const response = await fetch(`https://dummyjson.com/products?skip=0&limit=100`);
 
   if (!response.ok) {

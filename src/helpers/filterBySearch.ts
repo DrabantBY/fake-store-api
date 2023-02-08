@@ -1,4 +1,4 @@
-import { ProductInterface } from '../types';
+import type { ProductInterface } from '@/types';
 
 const filterBySearch = (product: ProductInterface, key: string) => {
   if (!key) return true;

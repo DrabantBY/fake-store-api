@@ -1,23 +1,24 @@
 import { useNavigate, Link } from 'react-router-dom';
-import useCartState from '../../hooks/useCartState';
+import useCartState from '@hooks/useCartState';
 import TableHeaders from '../Products/TableHeaders';
 import CartPagination from './CartPagination';
 import CartListBody from './CartListBody';
-import type { CartItemInterface } from '../../types';
+import type { CartItemInterface } from '@/types';
 
 const CartList = ({ products }: { products: CartItemInterface[] }) => {
   const navigate = useNavigate();
   const { getCartParams } = useCartState();
   const { cartSum } = getCartParams();
+  const PURCHASE_PER_PAGE = Number(import.meta.env.VITE_PURCHASE_PER_PAGE);
   return (
     <>
       <div className="table-responsive">
         <table className="table table-striped align-middle caption-top">
           <caption>
-            <CartPagination />
+            <CartPagination items={PURCHASE_PER_PAGE} />
           </caption>
           <TableHeaders />
-          <CartListBody products={products} />
+          <CartListBody products={products} items={PURCHASE_PER_PAGE} />
         </table>
       </div>
       <div className="btn-group">

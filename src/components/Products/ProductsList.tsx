@@ -1,17 +1,17 @@
 import { Suspense } from 'react';
 import { useLoaderData, useSearchParams, Await } from 'react-router-dom';
+import filterByQueryParams from '@helpers/filterByQueryParams';
 import ProductsListBlock from './ProductsListBlock/ProductsListBlock';
 import ProductsListTable from './ProductsListTable/ProductsListTable';
 import GoodsNotFound from './GoodsNotFound';
 import Spinner from './Spinner';
-import filterByQueryParams from '../../helpers/filterByQueryParams';
 import ProductsPagination from './ProductsPagination';
-import type { ProductsResponseType } from '../../types';
-import { PRODUCTS_PER_PAGE } from '../../constants';
+import type { ProductsResponseType } from '@/types';
 
 const ProductsList = () => {
   const { response } = useLoaderData() as { response: Promise<ProductsResponseType> };
   const [searchParams] = useSearchParams();
+  const PRODUCTS_PER_PAGE = Number(import.meta.env.VITE_PRODUCTS_PER_PAGE);
 
   return (
     <Suspense fallback={<Spinner />}>

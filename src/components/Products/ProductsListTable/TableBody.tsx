@@ -1,5 +1,5 @@
+import type { ProductInterface } from '@/types';
 import ProductsListRow from '../ProductsListRow';
-import type { ProductInterface } from '../../../types';
 
 const TableBody = ({ products }: { products: ProductInterface[] }) => {
   return (

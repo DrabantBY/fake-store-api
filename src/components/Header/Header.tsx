@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import useCartState from '../../hooks/useCartState';
-import useLoginState from '../../hooks/useLoginState';
-import { ReactComponent as Logo } from '../../assets/opencart.svg';
+import useCartState from '@hooks/useCartState';
+import useLoginState from '@hooks/useLoginState';
+import { ReactComponent as Logo } from '@assets/opencart.svg';
 import CartLink from './CartLink';
 
 import SignUp from './SignUp';

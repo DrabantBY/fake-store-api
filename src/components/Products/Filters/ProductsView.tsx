@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
-import { ReactComponent as IconBlock } from '../../../assets/grid.svg';
-import { ReactComponent as IconTable } from '../../../assets/list.svg';
+import { ReactComponent as IconBlock } from '@assets/grid.svg';
+import { ReactComponent as IconTable } from '@assets/list.svg';
 
 const ProductsView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
