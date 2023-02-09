@@ -8,6 +8,7 @@ import Cart from '@components/Cart/Cart';
 import LoginForm from '@components/LoginForm/LoginForm';
 import ErrorPage from '@pages/ErrorPage';
 import Error from '@components/Error/Error';
+import Order from '@components/Order/Order';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginForm />,
+      },
+      {
+        path: 'order',
+        element: <Order />,
       },
 
       {

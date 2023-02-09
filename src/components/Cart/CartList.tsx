@@ -28,7 +28,7 @@ const CartList = ({ products }: { products: CartItemInterface[] }) => {
         <button type="button" className="btn btn-primary" disabled>
           Total: {cartSum}$
         </button>
-        <Link to="/purchase" className="btn btn-primary">
+        <Link to="/order" className="btn btn-primary">
           buy
         </Link>
       </div>
