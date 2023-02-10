@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import getDiscount from '@helpers/getDiscount';
 import type { CartStateInterface, PersistStore } from '@/types';
 
 const useCartState = create<CartStateInterface>(
@@ -23,9 +24,10 @@ const useCartState = create<CartStateInterface>(
           (acc, item) => {
             acc.cartSize += item.cart;
             acc.cartSum += item.cart * item.price;
+            acc.discountSum += getDiscount(item.cart * item.price, item.discountPercentage);
             return acc;
           },
-          { cartSize: 0, cartSum: 0 }
+          { cartSize: 0, cartSum: 0, discountSum: 0 }
         );
       },
 

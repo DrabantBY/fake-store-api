@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainPage from '@pages/MainPage';
 import loaderProductsList from '@loaders/loaderProductsList';
 import loaderProductsItem from '@loaders/loaderProductsItem';
+import loaderUser from '@loaders/loaderUser';
 import Products from '@components/Products/Products';
 import ProductsItem from '@components/ProductsItem/ProductsItem';
 import Cart from '@components/Cart/Cart';
@@ -36,8 +37,9 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        path: 'order',
+        path: 'order/:id',
         element: <Order />,
+        loader: loaderUser,
       },
 
       {

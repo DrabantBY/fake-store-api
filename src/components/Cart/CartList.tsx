@@ -1,5 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom';
 import useCartState from '@hooks/useCartState';
+import useLoginState from '@hooks/useLoginState';
 import TableHeaders from '../Products/TableHeaders';
 import CartPagination from './CartPagination';
 import CartListBody from './CartListBody';
@@ -7,6 +8,7 @@ import type { CartItemInterface } from '@/types';
 
 const CartList = ({ products }: { products: CartItemInterface[] }) => {
   const navigate = useNavigate();
+  const id = useLoginState((state) => state.user?.id) as number;
   const { getCartParams } = useCartState();
   const { cartSum } = getCartParams();
   const PURCHASE_PER_PAGE = Number(import.meta.env.VITE_PURCHASE_PER_PAGE);
@@ -28,7 +30,7 @@ const CartList = ({ products }: { products: CartItemInterface[] }) => {
         <button type="button" className="btn btn-primary" disabled>
           Total: {cartSum}$
         </button>
-        <Link to="/order" className="btn btn-primary">
+        <Link to={`/order/${id}`} className="btn btn-primary">
           buy
         </Link>
       </div>

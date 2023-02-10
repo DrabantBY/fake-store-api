@@ -27,7 +27,7 @@ export interface CartStateInterface {
   cartState: CartItemInterface[];
   removeCartItem: (productId: number) => void;
   addCartItem: (product: ProductInterface) => void;
-  getCartParams: () => { cartSize: number; cartSum: number };
+  getCartParams: () => { cartSize: number; cartSum: number; discountSum: number };
   isCartItem: (productId: number) => boolean;
   getCartItemNumber: (productId: number) => number;
   updateCartItemNumber: (productId: number, step: 1 | -1) => void;
@@ -44,6 +44,20 @@ export interface UserLoginInterface {
   gender: string;
   image: string;
   token: string;
+}
+
+export interface UserOrderInterface {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: {
+    address: string;
+    city: string;
+    postalCode: string;
+  };
+  [key: string]: unknown;
 }
 
 export interface LoginStateInterface {
