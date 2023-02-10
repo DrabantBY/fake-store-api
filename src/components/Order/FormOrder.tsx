@@ -6,12 +6,15 @@ import type { UserOrderInterface } from '@/types';
 const FormOrder = ({ user }: { user: UserOrderInterface }) => {
   const [code, setCode] = useState('');
   const getCartParams = useCartState((state) => state.getCartParams);
-  const { firstName, lastName, username, email, address } = user;
+  const { id, firstName, lastName, username, email, address } = user;
   const { cartSum, discountSum } = getCartParams();
   const isPromocode = code === 'goodstore';
   return (
     <div className="row">
-      <Form className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto">
+      <Form
+        className="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto"
+        method="delete"
+        action="/">
         <div className="row mb-2">
           <div className="col-6">
             <label htmlFor="firstName" className="form-label">
@@ -23,7 +26,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="firstName"
               defaultValue={firstName}
-              disabled
             />
           </div>
           <div className="col-6">
@@ -36,7 +38,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="lastName"
               defaultValue={lastName}
-              disabled
             />
           </div>
         </div>
@@ -50,7 +51,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             className="form-control"
             name="userName"
             defaultValue={username}
-            disabled
           />
         </div>
         <div className="mb-2">
@@ -63,7 +63,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             className="form-control"
             name="email"
             defaultValue={email}
-            disabled
           />
         </div>
         <div className="row mb-2">
@@ -77,7 +76,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="code"
               defaultValue={address.postalCode}
-              disabled
             />
           </div>
           <div className="col-7">
@@ -90,7 +88,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="city"
               defaultValue={address.city}
-              disabled
             />
           </div>
         </div>
@@ -104,7 +101,6 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             className="form-control"
             name="address"
             defaultValue={address.address}
-            disabled
           />
         </div>
         <div className="mb-3">
@@ -121,26 +117,40 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             onChange={(e) => setCode(e.target.value)}
           />
         </div>
-        <div className="d-flex justify-content-between">
-          <Link to="/cart" className="btn btn-primary">
-            back
-          </Link>
+        <div className="mb-3">
+          <input
+            id="userId"
+            type="hidden"
+            className="form-control"
+            name="userId"
+            defaultValue={id}
+            onChange={(e) => setCode(e.target.value)}
+          />
+        </div>
+        <div className="d-flex flex-column gap-2">
           <div className="btn-group ">
             <span className="btn btn-primary active">Total: </span>
             <span
               className={`btn  ${
                 isPromocode
                   ? 'btn-outline-danger text-decoration-line-through fw-light'
-                  : 'fw-bold btn-outline-secondary'
+                  : 'fw-bold btn-outline-primary'
               }`}>
               {cartSum}$
             </span>
             {isPromocode && (
               <span className="btn btn-outline-primary fw-bold">{discountSum.toFixed(2)}$</span>
             )}
-            <button type="submit" className="btn btn-primary">
-              Send
-            </button>
+          </div>
+          <div>
+            <div className="btn-group">
+              <Link to="/cart" className="btn btn-outline-primary">
+                back
+              </Link>
+              <button type="submit" className="btn btn-primary">
+                Send
+              </button>
+            </div>
           </div>
         </div>
       </Form>

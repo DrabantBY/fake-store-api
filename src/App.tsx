@@ -10,11 +10,13 @@ import LoginForm from '@components/LoginForm/LoginForm';
 import ErrorPage from '@pages/ErrorPage';
 import Error from '@components/Error/Error';
 import Order from '@components/Order/Order';
+import actionMakeOrder from '@actions/actionMakeOrder';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainPage />,
+    action: actionMakeOrder,
     children: [
       {
         index: true,

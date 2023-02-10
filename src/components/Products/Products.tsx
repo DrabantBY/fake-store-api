@@ -1,3 +1,4 @@
+import { useActionData } from 'react-router-dom';
 import SelectCategory from './Filters/SelectCategory';
 import ProductsView from './Filters/ProductsView';
 import RangeFilter from './Filters/RangeFilter';
@@ -5,11 +6,15 @@ import ResetFilters from './Filters/ResetFilters';
 import SearchForm from './Filters/SearchForm';
 import SelectSort from './Filters/SelectSort';
 import ProductsList from './ProductsList';
+import Modal from './Modal';
 
 const Products = () => {
+  const user = useActionData() as { firstName: string; lastName: string };
+  console.log(user);
   return (
     <div className="row py-2">
       <div className="col-5 col-sm-4 col-lg-2">
+        <Modal user={user} />
         <SearchForm />
         <SelectCategory />
         <SelectSort />
