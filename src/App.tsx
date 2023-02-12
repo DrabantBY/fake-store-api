@@ -17,6 +17,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <MainPage />,
     action: actionMakeOrder,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -42,13 +43,13 @@ const router = createBrowserRouter([
         path: 'order/:id',
         element: <Order />,
         loader: loaderUser,
-      },
-
-      {
-        path: '*',
-        element: <ErrorPage />,
+        errorElement: <Error />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <ErrorPage />,
   },
 ]);
 

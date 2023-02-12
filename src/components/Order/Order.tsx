@@ -8,7 +8,9 @@ const Order = () => {
   const { response } = useLoaderData() as { response: Promise<UserOrderInterface> };
   return (
     <Suspense fallback={<Spinner />}>
-      <Await resolve={response}>{(data: UserOrderInterface) => <FormOrder user={data} />}</Await>
+      <Await resolve={response}>
+        <FormOrder />
+      </Await>
     </Suspense>
   );
 };

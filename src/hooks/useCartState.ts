@@ -54,6 +54,8 @@ const useCartState = create<CartStateInterface>(
         });
         set({ cartState: newCartState.filter((cartItem) => cartItem.cart !== 0) });
       },
+
+      clearCart: () => set({ cartState: [] }),
     }),
     { name: 'cart-store' }
   )

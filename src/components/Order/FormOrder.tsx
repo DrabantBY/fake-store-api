@@ -1,14 +1,21 @@
 import { useState } from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useAsyncValue, useNavigation } from 'react-router-dom';
 import useCartState from '@hooks/useCartState';
 import type { UserOrderInterface } from '@/types';
 
-const FormOrder = ({ user }: { user: UserOrderInterface }) => {
+const FormOrder = () => {
   const [code, setCode] = useState('');
-  const getCartParams = useCartState((state) => state.getCartParams);
-  const { id, firstName, lastName, username, email, address } = user;
-  const { cartSum, discountSum } = getCartParams();
   const isPromocode = code === 'goodstore';
+
+  const getCartParams = useCartState((state) => state.getCartParams);
+  const { cartSum, discountSum } = getCartParams();
+
+  const { id, firstName, lastName, username, email, address } =
+    useAsyncValue() as UserOrderInterface;
+
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
     <div className="row">
       <Form
@@ -26,6 +33,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="firstName"
               defaultValue={firstName}
+              disabled
             />
           </div>
           <div className="col-6">
@@ -38,6 +46,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="lastName"
               defaultValue={lastName}
+              disabled
             />
           </div>
         </div>
@@ -51,6 +60,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             className="form-control"
             name="userName"
             defaultValue={username}
+            disabled
           />
         </div>
         <div className="mb-2">
@@ -63,6 +73,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             className="form-control"
             name="email"
             defaultValue={email}
+            disabled
           />
         </div>
         <div className="row mb-2">
@@ -76,6 +87,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="code"
               defaultValue={address.postalCode}
+              disabled
             />
           </div>
           <div className="col-7">
@@ -88,6 +100,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               className="form-control"
               name="city"
               defaultValue={address.city}
+              disabled
             />
           </div>
         </div>
@@ -101,6 +114,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             className="form-control"
             name="address"
             defaultValue={address.address}
+            disabled
           />
         </div>
         <div className="mb-3">
@@ -115,6 +129,7 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
             placeholder="enter goodstore"
             value={code}
             onChange={(e) => setCode(e.target.value)}
+            disabled={isSubmitting}
           />
         </div>
         <div className="mb-3">
@@ -147,8 +162,19 @@ const FormOrder = ({ user }: { user: UserOrderInterface }) => {
               <Link to="/cart" className="btn btn-outline-primary">
                 back
               </Link>
-              <button type="submit" className="btn btn-primary">
-                Send
+              <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    Loading...
+                  </>
+                ) : (
+                  'Send'
+                )}
               </button>
             </div>
           </div>

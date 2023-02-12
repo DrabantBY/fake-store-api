@@ -1,4 +1,5 @@
 import { useActionData } from 'react-router-dom';
+import useCartState from '@hooks/useCartState';
 import SelectCategory from './Filters/SelectCategory';
 import ProductsView from './Filters/ProductsView';
 import RangeFilter from './Filters/RangeFilter';
@@ -10,11 +11,14 @@ import Modal from './Modal';
 
 const Products = () => {
   const user = useActionData() as { firstName: string; lastName: string };
-  console.log(user);
+  const clearCart = useCartState((state) => state.clearCart);
+  if (user) {
+    clearCart();
+  }
   return (
     <div className="row py-2">
       <div className="col-5 col-sm-4 col-lg-2">
-        <Modal user={user} />
+        {user && <Modal user={user} />}
         <SearchForm />
         <SelectCategory />
         <SelectSort />

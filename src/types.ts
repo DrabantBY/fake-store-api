@@ -31,6 +31,7 @@ export interface CartStateInterface {
   isCartItem: (productId: number) => boolean;
   getCartItemNumber: (productId: number) => number;
   updateCartItemNumber: (productId: number, step: 1 | -1) => void;
+  clearCart: () => void;
 }
 
 type FormData = { username: string; password: string };
