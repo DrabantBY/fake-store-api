@@ -47,10 +47,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: '*',
-    element: <ErrorPage />,
-  },
+  // {
+  //   path: '*',
+  //   element: <ErrorPage />,
+  // },
 ]);
 
 export const App = () => <RouterProvider router={router} />;
