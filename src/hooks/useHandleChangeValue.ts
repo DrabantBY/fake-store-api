@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+// import debounce from '@helpers/debounce';
 
 const useHandleChangeValue = (
   queryParam: string,
@@ -29,6 +30,8 @@ const useHandleChangeValue = (
 
     setSearchParams(searchParams);
   };
+
+  // handleChangeValue = debounce(handleChangeValue, 200);
 
   return [stateChangeValue, handleChangeValue];
 };
