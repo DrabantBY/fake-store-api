@@ -1,17 +1,9 @@
-import { ChangeEvent } from 'react';
-
-const debounce = (
-  func: React.ChangeEventHandler<HTMLSelectElement | HTMLInputElement>,
-  time: number
-) => {
+const debounce = (func: (searchParams: URLSearchParams) => void, time: number) => {
   let timer: ReturnType<typeof setTimeout>;
 
-  return function noname(
-    this: unknown,
-    ...args: [ChangeEvent<HTMLSelectElement | HTMLInputElement>]
-  ) {
+  return function noname(this: unknown, arg: URLSearchParams) {
     clearTimeout(timer);
-    timer = setTimeout(() => func.apply(this, args), time);
+    timer = setTimeout(() => func.call(this, arg), time);
   };
 };
 

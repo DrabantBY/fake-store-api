@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// import debounce from '@helpers/debounce';
+import debounce from '@helpers/debounce';
 
 const useHandleChangeValue = (
   queryParam: string,
@@ -13,6 +13,8 @@ const useHandleChangeValue = (
   useEffect(() => {
     setStateChangeValue(searchParams.get(queryParam) ?? initValue);
   }, [initValue, queryParam, searchParams]);
+
+  const debounceSetSearchParams = useMemo(() => debounce(setSearchParams, 300), [setSearchParams]);
 
   const handleChangeValue: React.ChangeEventHandler<HTMLSelectElement | HTMLInputElement> = (e) => {
     const value = e.target.value.trim().toLocaleLowerCase();
@@ -28,10 +30,8 @@ const useHandleChangeValue = (
       searchParams.delete('page');
     }
 
-    setSearchParams(searchParams);
+    debounceSetSearchParams(searchParams);
   };
-
-  // handleChangeValue = debounce(handleChangeValue, 200);
 
   return [stateChangeValue, handleChangeValue];
 };
