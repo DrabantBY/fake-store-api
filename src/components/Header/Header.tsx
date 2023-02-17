@@ -4,8 +4,8 @@ import useLoginState from '@hooks/useLoginState';
 import { ReactComponent as Logo } from '@assets/opencart.svg';
 import CartLink from './CartLink';
 
-import SignUp from './SignUp';
-import SignIn from './SignIn';
+import LogOut from './LogOut';
+import LogIn from './LogIn';
 import User from './User';
 
 const Header = () => {
@@ -29,11 +29,11 @@ const Header = () => {
             <User />
             {user ? (
               <>
-                <SignUp />
+                <LogOut />
                 <CartLink cartSize={cartSize} />
               </>
             ) : (
-              <SignIn />
+              <LogIn />
             )}
           </span>
         </nav>

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const SignIn = () => (
+const LogIn = () => (
   <Link className="btn btn-primary" to="login">
-    Sign In
+    Log In
   </Link>
 );
 
-export default SignIn;
+export default LogIn;

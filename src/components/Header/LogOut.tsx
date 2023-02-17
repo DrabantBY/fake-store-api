@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import useLoginState from '@hooks/useLoginState';
 
-const SignUp = () => {
+const LogOut = () => {
   const clearUserLoginData = useLoginState((state) => state.clearUserLoginData);
   const navigate = useNavigate();
   return (
@@ -12,9 +12,9 @@ const SignUp = () => {
         clearUserLoginData();
         navigate('/');
       }}>
-      Sign Up
+      Log Out
     </button>
   );
 };
 
-export default SignUp;
+export default LogOut;

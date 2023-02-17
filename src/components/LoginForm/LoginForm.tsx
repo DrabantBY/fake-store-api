@@ -67,7 +67,7 @@ const LoginForm = () => {
                 Loading...
               </>
             ) : (
-              'Log in'
+              'Log In'
             )}
           </button>
           {error && (
